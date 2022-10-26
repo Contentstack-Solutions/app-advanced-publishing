@@ -5,7 +5,7 @@ the implementation also provides examples on how to managed configuration as a J
 
 ## LICENSE
 
-MIT License, see LICENSE file for more details.
+**_MIT License_**, see LICENSE file for more details.
 
 ### Prerequisites
 
