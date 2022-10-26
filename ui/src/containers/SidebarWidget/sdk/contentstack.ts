@@ -52,31 +52,45 @@ export interface SdkResult {
 export const useContentstackApi = (config: IApiConfig): SdkResult => {
   const getDefaultAxiosOptions = React.useCallback(
     (options: AxiosRequestConfig<any>): AxiosRequestConfig<any> => {
-      const o: AxiosRequestConfig<any> = {
-        ...options,
-        headers: {
-          authorization: config.token,
-          api_key: config.apiKey,
-          ...options.headers,
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      };
+      if (config) {
+        const o: AxiosRequestConfig<any> = {
+          ...options,
+          // headers: {
+          //   authorization: config.token,
+          //   api_key: config.apiKey,
+          //   "Content-Type": "application/json",
+          // },
+          // withCredentials: true,
+        };
+
+        // if (options.headers) {
+        //   o.headers = {
+        //     ...o.headers,
+        //     ...options.headers,
+        //   };
+        // }
+        return o;
+      }
+
       // console.log("Options", o);
-      return o;
+      return {};
     },
     [config]
   );
 
   const getUrl = React.useCallback(
     (query: string): string => {
+      let url = config.endpoint;
+
       if (config.endpoint && config.endpoint.endsWith("/") && query.startsWith("/")) {
-        return `${config.endpoint}${query.substring(1)}`;
+        url = `${config.endpoint}${query.substring(1)}`;
       } else if (config.endpoint && config.endpoint.endsWith("/")) {
-        return `${config.endpoint}${query}`;
+        url = `${config.endpoint}${query}`;
       } else {
-        return config.endpoint && config.endpoint.trim() === "" ? query : `${config.endpoint}/${query}`;
+        url = config.endpoint && config.endpoint.trim() === "" ? query : `${config.endpoint}/${query}`;
       }
+      console.log("URL", url);
+      return url;
     },
     [config]
   );
