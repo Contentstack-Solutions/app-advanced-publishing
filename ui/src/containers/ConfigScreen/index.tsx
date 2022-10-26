@@ -23,9 +23,7 @@ const json: IAdvancedPublishingConfig = {
   locales: [],
   splitByLocale: true,
   maxReleaseItems: 200,
-  apiKey: "",
-  token: "",
-  endpoint: "https://api.contentstack.io/",
+  endpoint: "http://localhost:8080/",
 };
 const isValidJson = (json: any) => {
   try {

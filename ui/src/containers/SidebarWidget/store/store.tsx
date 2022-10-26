@@ -41,9 +41,7 @@ const useGlobalApplicationContext = () => {
   // const [selectedReferences, updateSelectedReferences] = React.useState({});
 
   const [extensionConfig, setExtensionConfig] = React.useState<IAdvancedPublishingConfig>({
-    apiKey: "",
     endpoint: "",
-    token: "",
     splitByLocale: true,
     locales: [],
     environments: [],

@@ -4,8 +4,6 @@ import { IReference } from "../models/models";
 import React from "react";
 
 export interface IApiConfig {
-  apiKey: string;
-  token: string;
   endpoint: string;
 }
 export interface IEntryReleaseInfo {
