@@ -33,6 +33,7 @@ function ReferencesTable() {
     });
     updateSelectedReferences({ ...selectedObj });
   };
+
   const {
     extensionConfig,
     dataStatus,

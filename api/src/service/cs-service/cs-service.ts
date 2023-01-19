@@ -31,10 +31,11 @@ export class ContentstackService {
       data: req.body,
       url: newUrl,
     });
-    res.setHeader("Content-Type", "application/json");
+    // res.setHeader("Content-Type", "application/json");
     // console.log("options", options);
     axios(options)
       .then((response) => {
+        // console.log("Response.data", response.data);
         res.send(response.data);
       })
       .catch((error) => {

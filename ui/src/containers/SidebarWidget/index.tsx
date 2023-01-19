@@ -8,6 +8,7 @@ import ReferencesTable, { ReferencesTableLoading } from "./components/references
 import ContentstackAppSdk from "@contentstack/app-sdk";
 import Extension from "@contentstack/app-sdk/dist/src/extension";
 import { IAdvancedPublishingConfig } from "./models/models";
+import { Link } from "react-router-dom";
 import Options from "./components/options";
 /* Import React modules */
 import React from "react";
@@ -25,6 +26,7 @@ const SidebarWidget: React.FC = function () {
 
   React.useEffect(() => {
     ContentstackAppSdk.init().then((appSdk: Extension) => {
+      console.log("AppSDK", appSdk);
       appSdk
         ?.getConfig()
         .then((sidebarConfig: any) => {
@@ -47,12 +49,15 @@ const SidebarWidget: React.FC = function () {
   }, [setExtensionConfig]);
 
   return (
-    <div className="layout-container">
-      {error && <Error />}
-      {showWarning && <ShowWarning />}
-      {!showWarning && !error && <Options />}
-      {!showWarning && !error && <>{loading ? <ReferencesTableLoading /> : <ReferencesTable />}</>}
-    </div>
+    <>
+      <div className="layout-container">
+        {/* <Link to={"/"}>Go to dashboard</Link> */}
+        {error && <Error />}
+        {showWarning && <ShowWarning />}
+        {!showWarning && !error && <Options />}
+        {!showWarning && !error && <>{loading ? <ReferencesTableLoading /> : <ReferencesTable />}</>}
+      </div>
+    </>
   );
 };
 

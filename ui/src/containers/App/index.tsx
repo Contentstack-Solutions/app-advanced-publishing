@@ -3,21 +3,41 @@ import "@contentstack/venus-components/build/main.css";
 /* Import our CSS */
 import "./styles.scss";
 
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 
+import { Provider as BulkPublishingProvider } from "jotai";
 import ConfigScreen from "../ConfigScreen";
 /* Import other node modules */
 /* Import our modules */
 import ErrorBoundary from "../../components/ErrorBoundary";
+import { OAuthCallback } from "../../common/oauth2";
 /* Import React modules */
 import React from "react";
+import SidebarOAuthWidget from "../SidebarOAuthWidget";
 import SidebarWidget from "../SidebarWidget";
 
 const HomeRedirectHandler = function () {
-  if (window?.location?.pathname !== "/") {
+  console.log("HomeRedirectHandler");
+  console.log(window.location?.pathname);
+  if (window?.location?.pathname === "/callback") {
     return <Navigate to={{ pathname: window.location.pathname }} />;
   }
-  return null;
+  return (
+    <>
+      <ul>
+        <li>
+          <Link to={"/advanced-publishing-sidebar-widget"}>Management Token</Link>
+        </li>
+        <li>
+          <Link to={"/oauth-sidebar-widget"}>OAuth</Link>
+        </li>
+      </ul>
+    </>
+  );
+  // }
+  // return (
+  //   <InstructionText style={{ fontSize: 18, color: "#f40" }}>Extension is not properly configured!</InstructionText>
+  // );
 };
 
 const App: React.FC = function () {
@@ -35,6 +55,8 @@ const App: React.FC = function () {
             <Route path="/" element={<HomeRedirectHandler />} />
             <Route path="/config" element={<ConfigScreen />} />
             <Route path="/advanced-publishing-sidebar-widget" element={<SidebarWidget />} />
+            <Route path="/oauth-sidebar-widget" element={<SidebarOAuthWidget />} />
+            <Route path="/callback" element={<OAuthCallback />} />
             {/* <Route path="/dashboard-widget" element={<DashboardWidget />} />
             <Route path="/custom-field" element={<CustomField />} /> */}
           </Routes>

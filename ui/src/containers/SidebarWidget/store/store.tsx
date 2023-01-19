@@ -541,6 +541,7 @@ const useGlobalApplicationContext = () => {
                 checked: extensionConfig.locales.some((c: ILocaleConfig) => c.code === l.code && c.checked),
               };
             });
+            console.log("Actual Locales", localesResponse.data.locales, "My Locales", locales);
             cmApi
               .getEnvironments()
               .then((environmentsResponse: any) => {
@@ -554,7 +555,7 @@ const useGlobalApplicationContext = () => {
                       ),
                     };
                   });
-
+                  console.log("Actual Environments", environments);
                   // console.log("Widget", extensionConfig.location?.SidebarWidget);
                   // console.log("Entry", extensionConfig.location?.SidebarWidget?.entry?.getData());
                   // console.log("Entry UID", extensionConfig.entryUid);

@@ -101,8 +101,7 @@ Note that currently the host names for the api is provided via the configuration
   ],
   "splitByLocale": true,
   "maxReleaseItems": 200,
-  "endpoint": "http://localhost:8080/cs/api/",
-  }
+  "endpoint": "http://localhost:8080/cs/api/"
 }
 ```
 

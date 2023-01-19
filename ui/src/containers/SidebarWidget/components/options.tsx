@@ -55,7 +55,7 @@ function Options() {
                       checked={locale.checked}
                       disabled={operationInProgress !== OPERATIONS.NONE}
                       isButton={false}
-                      isLabelFullWth={false}
+                      isLabelFullWidth={false}
                     />
                   </div>
                 );
